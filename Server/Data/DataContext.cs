@@ -1,5 +1,7 @@
 ﻿using BlazorAppJsonColumns.Shared;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace BlazorAppJsonColumns.Server.Data
 {
@@ -14,7 +16,8 @@ namespace BlazorAppJsonColumns.Server.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Server=.\\SQLExpress;DataBase=Alunos1;Trusted_Connection=True;TrustServerCertificate=true");
+            //optionsBuilder.UseSqlServer("Server=.\\SQLExpress;DataBase=Alunos1;Trusted_Connection=True;TrustServerCertificate=true");
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=Aluno1;Trusted_Connection=True;TrustServerCertificate=true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,7 +27,6 @@ namespace BlazorAppJsonColumns.Server.Data
                 navigationsBuilder.ToJson();
             });
         }
-
         public DbSet<Aluno> TblTeste2 { get; set; } = null!;
     }
 }

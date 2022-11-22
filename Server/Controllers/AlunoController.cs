@@ -21,6 +21,21 @@ namespace BlazorAppJsonColumns.Server.Controllers
             await _context.TblTeste2.AddRangeAsync(alunos);
             await _context.SaveChangesAsync();
             return StatusCode(StatusCodes.Status201Created, alunos);
-        }           
+        }
+
+        [HttpGet("{cidade1}")]
+        public async Task<ActionResult<List<Aluno>>> GetAlunos([FromRoute] string cidade1)
+        {
+            var alunos = await _context.TblTeste2
+                .Include(x => x.Details)
+                .Where(x => x.Details!.Cidade.Contains(cidade1)).ToListAsync();
+            return Ok(alunos);
+        }
+
+        [HttpGet("todosalunos")]
+        public async Task<ActionResult<List<Aluno>>> GetTodoAlunos()
+        {
+            return await _context.TblTeste2.ToListAsync();
+        }
     }
 }
