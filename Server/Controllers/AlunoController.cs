@@ -21,15 +21,6 @@ namespace BlazorAppJsonColumns.Server.Controllers
             await _context.TblTeste2.AddRangeAsync(alunos);
             await _context.SaveChangesAsync();
             return StatusCode(StatusCodes.Status201Created, alunos);
-        }
-        
-        [HttpGet("{cidade}")]
-        public async Task<ActionResult<List<Aluno>>> GetAlunoJson([FromRoute] string cidade)
-        {
-            var alunos = await _context.TblTeste2                
-                .Include(x => x.Details)
-                .Where(x => x.Details!.Cidade.Contains(cidade)).ToListAsync();
-            return alunos;
-        }
+        }           
     }
 }
