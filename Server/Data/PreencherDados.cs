@@ -13,7 +13,7 @@ namespace BlazorAppJsonColumns.Server.Data
                 Sobrenome = "Estudioso",
                 Details = new AlunoDetails()
                 {
-                    Idade = 18,
+                    Idade = "18",
                     Rua = "Fantasia",
                     Cidade = "Alegria"
                 }
