@@ -9,13 +9,13 @@ namespace BlazorAppJsonColumns.Server.Data
             using var context = new DataContext();
             var NovoAluno = new Aluno
             {
-                Nome = "Daniel",
-                Sobrenome = "Zoldan",
+                Nome = "Aluno1",
+                Sobrenome = "Estudioso",
                 Details = new AlunoDetails()
                 {
-                    Idade = 46,
-                    Rua = "Das Flores",
-                    Cidade = "Porto Alegre"
+                    Idade = 18,
+                    Rua = "Fantasia",
+                    Cidade = "Alegria"
                 }
             };
             context.Add(NovoAluno);

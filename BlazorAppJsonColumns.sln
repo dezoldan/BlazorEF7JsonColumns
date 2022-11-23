@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppJsonColumns.Server", "Server\BlazorAppJsonColumns.Server.csproj", "{8C62B8D4-3FFE-4379-9403-F45B96D01CD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAppJsonColumns.Server", "Server\BlazorAppJsonColumns.Server.csproj", "{8C62B8D4-3FFE-4379-9403-F45B96D01CD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppJsonColumns.Client", "Client\BlazorAppJsonColumns.Client.csproj", "{68E16BC3-2D1C-4F5C-9678-297DF231A80A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAppJsonColumns.Client", "Client\BlazorAppJsonColumns.Client.csproj", "{68E16BC3-2D1C-4F5C-9678-297DF231A80A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppJsonColumns.Shared", "Shared\BlazorAppJsonColumns.Shared.csproj", "{8730EE24-EADE-4439-B03D-FD32E9B0C47F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAppJsonColumns.Shared", "Shared\BlazorAppJsonColumns.Shared.csproj", "{8730EE24-EADE-4439-B03D-FD32E9B0C47F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

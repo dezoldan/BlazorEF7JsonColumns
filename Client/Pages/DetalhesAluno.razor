@@ -1,0 +1,91 @@
+﻿@page "/alunos"
+@using BlazorAppJsonColumns.Client.ServicesClient;
+@using BlazorAppJsonColumns.Shared;
+@using BlazorPro.Spinkit
+@inject HttpClient Http
+@inject IServiceClient _serviceAluno
+<h1 class="mb-1">Alunos <button type="button" class="btn btn-link" @onclick="() => GetAlunos()"><i style="font-size:2.5em;" class="bi bi-arrow-clockwise"></i></button></h1>
+@if (alunos1 == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="container">
+        <table class="table table-hover">
+            <thead style="font-weight:bold; font-size:1.2em;">
+                <tr>
+                    <td>Id</td>
+                    <td>Nome</td>
+                    <td>Sobrenome</td>
+                    <td>+Infos</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var aluno1 in alunos1)
+                {
+                    <tr @onclick="() => aluno1.IsRowExpanded =! aluno1.IsRowExpanded">
+                        @if (!aluno1.IsRowExpanded)
+                        {
+                            icon1 = "bi bi-plus-circle-fill";
+                        }
+                        else
+                        {
+                            icon1 = "bi bi-x-circle";
+                        }
+                        <td>@aluno1.Id</td>
+                        <td>@aluno1.Nome</td>
+                        <td>@aluno1.Sobrenome</td>
+                        <td><i style="font-size:2em;" class="@icon1"></i></td>
+                    </tr>
+                    @if (aluno1.IsRowExpanded)
+                    {
+                        <tr>
+                            <td colspan="6">
+                                <div class="container bg-danger">
+                                    <div style="background-color:#fffafa" class="card card-body">
+                                        <h5 style="color:cornflowerblue">
+                                            <i class="bg bi-filetype-json"></i>
+                                            JSON Columns
+                                        </h5>
+                                        <ul>
+                                            <li>
+                                                A idade do aluno é: @aluno1.Details!.Idade
+                                            </li>
+                                            <li>
+                                                A rua onde mora o aluno é: @aluno1.Details.Rua
+                                            </li>
+                                            <li>
+                                                A cidade onde mora o aluno é: @aluno1.Details.Cidade
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+}
+<SpinLoader IsLoading="isLoading1" Color="Green" Size="40px" Spinner="SpinnerType.Circle">
+</SpinLoader>
+@code {
+    private List<Aluno>? alunos1;
+    private bool isLoading1;
+    private string icon1 = "bi bi-plus-circle-fill";
+
+    protected override async Task OnInitializedAsync()
+    {
+        alunos1 = await Http.GetFromJsonAsync<List<Aluno>>("v0/Aluno/todosalunos");
+    }
+
+    async Task GetAlunos()
+    {
+        isLoading1 = true;
+        await Task.Delay(1500);
+        alunos1 = await Http.GetFromJsonAsync<List<Aluno>>("v0/Aluno/todosalunos");
+        isLoading1 = false;
+    }
+}
